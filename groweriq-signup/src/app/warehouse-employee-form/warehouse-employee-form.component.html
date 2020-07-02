@@ -1,0 +1,18 @@
+<mat-form-field [formGroup]="userForm" class="form-field">
+  <mat-label>Years of Experience</mat-label>
+  <input matInput id="txtYearsOfExp" formControlName="years_of_experience" type="number">
+</mat-form-field>
+<mat-form-field [formGroup]="userForm" class="form-field">
+  <mat-label>Educational Qualification</mat-label>
+  <input matInput id="txtEduQual" formControlName="educational_qualification" type="string" required>
+  <mat-error *ngIf="eduQualCtrl.hasError('required')">
+    Educational Qualification is a required field
+  </mat-error>
+</mat-form-field>
+  <div [formGroup]="userForm" class="form-field">
+    <mat-label class="mr-2">Are you Inventory Management Certified?</mat-label>
+  <mat-radio-group id="rdoInvMgmtCert" formControlName="inventory_management_certification">
+    <mat-radio-button [value]=true>Yes</mat-radio-button>
+    <mat-radio-button [value]=false>No</mat-radio-button>
+  </mat-radio-group>
+</div>

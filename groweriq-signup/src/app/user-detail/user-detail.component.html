@@ -1,0 +1,12 @@
+<div class="mt-5">
+  <h1 mat-dialog-title>Created User Details</h1>
+  <div mat-dialog-content>
+    <div class="row" *ngFor="let field of fields">
+      <div class="col"><strong>{{ getFieldDisplayName(field) }}:</strong></div>
+      <div class="col">{{ getFieldValue(field) }}</div>
+    </div>
+  </div>
+  <button class="mt-5" mat-raised-button color="primary" (click)="backToUsersList()" cdkFocusInitial>Back to Registered
+    Users
+    List</button>
+</div>

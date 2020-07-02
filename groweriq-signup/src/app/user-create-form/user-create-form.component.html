@@ -1,0 +1,39 @@
+<form id="userSignUpForm" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <mat-form-field id="name">
+    <mat-label>Name</mat-label>
+    <input matInput id="txtName" placeholder="Enter your fullname" formControlName="name" required>
+    <mat-error *ngIf="nameCtrl.hasError('required')">
+      Name is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field id="phone">
+    <mat-label>Phone Number (with country code)</mat-label>
+    <input matInput id="txtPhone" placeholder="eg. +1 1234567890" formControlName="phone_number" required>
+    <mat-error *ngIf="phoneNumberCtrl.hasError('required')">
+      Please enter valid phone number
+    </mat-error>
+  </mat-form-field>
+  <div class="form-field" id="gender">
+    <mat-label class="mr-2">Gender</mat-label>
+    <mat-radio-group id="rdoGender" formControlName="gender">
+      <mat-radio-button class="mr-2" [value]="'female'">Female</mat-radio-button>
+      <mat-radio-button class="mr-2" [value]="'male'">Male</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="form-field">
+    <app-address-form-control formControlName="address"></app-address-form-control>
+  </div>
+  <mat-form-field id="userType">
+    <mat-label>User Type</mat-label>
+    <mat-select formControlName="type" id="ddUserType" required>
+      <mat-option>-- None --</mat-option>
+        <mat-option *ngFor="let type of userTypeKeys" [value]="type">
+          {{ type | displayText:userTypes }}
+        </mat-option>
+    </mat-select>
+    <mat-error *ngIf="userTypeCtrl.hasError('required')">
+      User Type is required
+    </mat-error>
+  </mat-form-field>
+  <ng-template appDynamicFormcontrolsAnchor></ng-template>
+</form>

@@ -1,0 +1,21 @@
+<button class="float-right" color="primary" mat-raised-button (click)="openCreateUser()">Create User</button>
+<br/>
+<h2>Registered Users</h2>
+<mat-card *ngIf="usersData && usersData.data" class="registeredUsersCard">There are {{ usersData.data.length }} registered users</mat-card>
+<mat-table [dataSource]="usersData">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef i18n>Name</mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="phone_number">
+    <mat-header-cell *matHeaderCellDef i18n>Phone Number</mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{user.phone_number}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="type">
+    <mat-header-cell *matHeaderCellDef i18n>Type of User</mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{ user.type | displayText:userTypes }} </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="visibleColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: visibleColumns"></mat-row>
+</mat-table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons></mat-paginator>

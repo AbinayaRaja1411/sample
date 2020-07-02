@@ -1,0 +1,20 @@
+<mat-form-field [formGroup]="userForm" id="batchesHandled" class="form-field">
+  <mat-label>Batches Handled</mat-label>
+  <input matInput id="txtBatchesHandled" formControlName="batches_handled" type="number" required>
+  <mat-error *ngIf="batchesHandledCtrl.hasError('required')">
+    Batches Handled is required
+  </mat-error>
+</mat-form-field>
+<mat-form-field [formGroup]="userForm" class="form-field">
+  <mat-label>Yield Acquired (in kg)</mat-label>
+  <input matInput id="txtYieldAcquired" formControlName="yield_acquired" type="number">
+</mat-form-field>
+<mat-form-field [formGroup]="userForm" id="greenhouseLocations" class="form-field">
+  <mat-label>Greenhouse Locations</mat-label>
+  <mat-select id="ddGreenhouseLocations" formControlName="greenhouse_locations" multiple required>
+    <mat-option *ngFor="let location of locations" [value]="location">{{ location }}</mat-option>
+  </mat-select>
+  <mat-error *ngIf="greenhouseLocnCtrl.hasError('required')">
+    Please select atleast one greenhouse location
+  </mat-error>
+</mat-form-field>
